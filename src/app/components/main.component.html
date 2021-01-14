@@ -1,0 +1,84 @@
+<div class="row mt-5">
+    <div class="col-3" style="border-right: solid;">
+        <div class="row">
+            <div class="col">
+                <h3><a [routerLink]="['/profile', user_id]">{{profile_name}}</a></h3>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <button class="btn btn-success" (click)="createPost()">
+                    Create Post
+                </button>
+            </div>
+        </div>
+        <hr>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <h5>Weather Information</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {{weatherResult.location.name}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Location: {{weatherResult.location.name}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Temp (Celsius): {{weatherResult.current.temp_c}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                            <img src={{weatherResult.current.condition.icon}}>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Condition: {{weatherResult.current.condition.text}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Precipitation(mm): {{weatherResult.current.precip_mm}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Powered by <a href="https://www.weatherapi.com/" title="Weather API">WeatherAPI.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-9">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-success" [routerLink]="['/search']">Search</button>
+                </div>
+            </div>
+        </div>
+        <div class="row ml-3 mb-2" *ngFor="let item of postings">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <h4><a [routerLink]="['/posting', item._id]">{{item.title}}</a></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <small><i>Posted on {{item.datetime}}</i></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="row mt-3">
+    <div class="col">
+        <a [routerLink]="['/']">Home</a>
+    </div>
+</div>
+<form [formGroup]="form" (ngSubmit)="createPost()">
+    <div class="row mt-5">
+        <div class="col">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input id="title" class="form-control" type="text" placeholder="Title" formControlName="title">
+            </div>
+        </div>
+    </div>
+	<div class="row mt-3">
+        <div class="col">
+            <div class="form-group">
+                <label for="body">Body</label>
+                <textarea id="body" class="form-control" placeholder="Your story..." formControlName="body" style="height: 500px;"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row-3 mt-3">
+        <div class="col">
+            <div class="form-group">
+                <label for="tags">Tags</label>
+                <input id="tags" class="form-control" type="text" placeholder="#Life#Food#Travel" formControlName="tags">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="d-flex justify-content-end align-items-center mt-4">
+                <button class="btn btn-success" type="submit" [disabled]="isFormInvalid()">
+                    Create
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

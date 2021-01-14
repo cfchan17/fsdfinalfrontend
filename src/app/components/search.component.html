@@ -1,0 +1,43 @@
+<div class="row mt-5">
+    <div class="col">
+        <a [routerLink]="['/']">Home</a>
+    </div>
+</div>
+<form [formGroup]="form" (ngSubmit)="search()">
+    <div class="row mt-4">
+        <div class="col">
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="Search hashtags for example: #life#food" formControlName="searchTerm">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="d-flex justify-content-end align-items-center mt-4">
+                <button class="btn btn-success" type="submit" [disabled]="isFormInvalid()">
+                    Search
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+<hr>
+<div class="row ml-3 mb-2" *ngFor="let item of postings">
+    <div class="col">
+        <div class="row">
+            <div class="col">
+                <h4><a [routerLink]="['/posting', item._id]">{{item.title}}</a></h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <small><i>Posted on {{item.datetime}}</i></small>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row ml-3 mb-2" *ngIf="postings.length == 0">
+    <div class="col">
+        Nothing to display
+    </div>
+</div>

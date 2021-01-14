@@ -1,0 +1,32 @@
+<form [formGroup]="form" (ngSubmit)="authenticate()">
+    <div class="row mt-5">
+        <div class="col">
+            <div class="form-group">
+                <label for="title">Username</label>
+                <input id="title" class="form-control" type="text" placeholder="Username"
+                        [ngClass]="{'is-invalid': errorMessage}" formControlName="username">
+            </div>
+        </div>
+    </div>
+	<div class="row mt-3">
+        <div class="col">
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Password"
+                        [ngClass]="{'is-invalid': errorMessage}" formControlName="password">
+                <div class="invalid-feedback mt-3" *ngIf="errorMessage">
+                    {{ errorMessage }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="d-flex justify-content-end align-items-center mt-4">
+                <button class="btn btn-success" type="submit" [disabled]="form.invalid">
+                    Login
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
